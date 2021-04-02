@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,viewport-fit=cover">
+    <base target="_blank" />
+    <link rel="stylesheet" href="./css/style.css">
+    <title>WebRTC + clmtrackr.js</title>
+</head>
+
+<body>
+    <div class="webrtc-demo">
+        <div class="video-wrapper">
+            <video id="localVideo" autoplay muted playsinline></video>
+        </div>
+    </div>
+
+    <div class="webrtc-title">
+        <h1><a href="https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API">WebRTC</a></h1>
+        <h1>+</h1>
+        <h1><a href="https://www.auduno.com/clmtrackr/docs/reference.html">clmtrackr.js</a></h1>
+    </div>
+
+    <button id="startRecord">音视频录制</button>
+    <button id="startFaceDetect">人脸检测</button>
+
+    <button class="aliveDetect" id="mouse">张嘴检测</button>
+    <button class="aliveDetect" id="head">摇头检测</button>
+    <button class="aliveDetect" id="eye">眨眼检测</button>
+
+    <script src="./lib/vconsole.min.js"></script>
+    <script>
+        var logger = function (...args) {
+            console.log('[logger]', args[0], '-->', ...args.slice(1, args.length));
+        };
+        new VConsole();
+    </script>
+    <!-- clmtrackr.js -->
+    <script src="./lib/model_pca_20_svm.js"></script>
+    <script src="./lib/clmtrackr.js"></script>
+    <!-- polyfill -->
+    <script src="./utils/polyfill.js"></script>
+    <!-- 调用webrtc -->
+    <script src="./js/webrtc.js"></script>
+    <!-- 本地录制 -->
+    <script src="./js/record.js"></script>
+    <!-- 人脸检测 -->
+    <script src="./js/face-detect.js"></script>
+    <!-- 动作检测 -->
+    <script src="./js/alive-detect.js"></script>
+</body>
+
+</html>
